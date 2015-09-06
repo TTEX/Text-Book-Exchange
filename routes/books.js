@@ -32,6 +32,12 @@ exports.getallBooks = function(req, res) {
     })
 }
 
+//Returns a book by a certain course number
+/*exports.getBookByCourseNumber = function (req, res){
+    books.find({, function (err, book) {
+
+    });
+}*/
 exports.putBooks = function(req, res) {
 
 }
