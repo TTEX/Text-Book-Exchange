@@ -3,11 +3,12 @@
 var mongoose = require('mongoose')
 
 var bookModels = mongoose.Schema({
-    className: String, 
+    departmentNo: String,
+    courseNumber: String, 
     bookTitle: String,
     email: String, 
     condition: String, 
-    Price: String
+    price: String
 })
 
 module.exports = mongoose.models('book', bookModels)
