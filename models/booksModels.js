@@ -11,4 +11,4 @@ var bookModels = mongoose.Schema({
     price: String
 })
 
-module.exports = mongoose.models('book', bookModels)
+module.exports = mongoose.model('book', bookModels)

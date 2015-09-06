@@ -4,18 +4,21 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose')
 
 //TODO: To be deleted
 //var routes = require('./routes/index');
 //var users = require('./routes/users');
 
-var bookController = require('/routes/books')
+var bookController = require('./routes/books')
 
 var app = express();
 var router = express.Router();
 
 //TODO: Connection to a mongodb database
 
+mongoose.connect('mongodb://localhost/test')
+mongoose.connection.on('error', console.error.bind(console, 'connection error:'));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -30,22 +33,29 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 //TODO: Might not need this at all. To be removed
-//app.use('/', routes);
+//app.use('/', router);
 //app.use('/users', users);
 
 //Endpoint definition for all the books call
 router.route('/books')
-  .get(bookController.getBooks)
+  .get(bookController.getAllBooks)
   .post(bookController.postBooks)
   .delete(bookController.deleteBooks)
   .put(bookController.putBooks)
 
+
+app.get('/', function(req, res){
+  res.send("The server is up and running")
+  console.log("This is working")
+})
+app.use('/', router)
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
+
 
 // error handlers
 

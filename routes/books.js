@@ -5,9 +5,9 @@ exports.postBooks = function(req, res) {
 
        var newBook = new books();
 
-         newBook.department = req.body.departmentNo;
+         newBook.department = req.body.department;
          newBook.courseNumber = req.body.courseNumber;
-         newBook.bookTitle = req.body.bookTitle;
+         newBook.bookTitle = req.body.title;
          newBook.email = req.body.email;
          newBook.condition = req.body.condition;
          newBook.price = req.body.price;
@@ -16,19 +16,18 @@ exports.postBooks = function(req, res) {
              if(err) {
                  res.send(err)
 
-                 res.send({"Book added successfuly"})
+                 res.send({"Succes": "1"})
              }
          })
 }
 
-//Returns all the books 
-exports.getallBooks = function(req, res) {
-    books.find( function(err, book) {
-
+//Returns aall the books 
+exports.getAllBooks = function(req, res) {
+    books.find(function(err, book) {
         if(err)
             res.send(err);
 
-        res.json(books);
+        res.json(book);
     })
 }
 
