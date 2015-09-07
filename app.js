@@ -44,7 +44,9 @@ router.route('/books')
   .delete(bookController.deleteBooks)
   .put(bookController.putBooks)
 
-
+router.route('/books/:id')
+  .post(bookController.findBook)
+  
 app.get('/', function(req, res){
   res.send("The server is up and running")
   console.log("This is working")
