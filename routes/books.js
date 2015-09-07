@@ -3,6 +3,9 @@ var books = require('../models/booksModels')
 
 exports.postBooks = function(req, res) {
 
+    res.header("Access-Control-Allow-Origin", "*")
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
+
        var newBook = new books();
 
          newBook.department = req.body.department;
@@ -14,20 +17,33 @@ exports.postBooks = function(req, res) {
 
          newBook.save(function(err) {
              if(err) {
-                 res.send(err)
-
-                 res.send({"Succes": "1"})
+                 res.send(err);
+                 res.statusCode = 404;
+                 res.end();
              }
+
+            res.send("Book added successfully");
+            res.statusCode = 200;
+            res.end();
+             
          })
 }
 
-//Returns aall the books 
+//Returns all the books 
 exports.getAllBooks = function(req, res) {
+    res.header("Access-Control-Allow-Origin", "*")
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
+    
     books.find(function(err, book) {
-        if(err)
-            res.send(err);
+        if(err) {
+            res.send(err); 
+            res.statusCode = 404;
+            res.end():
+        }
 
-        res.json(book);
+        res.send(book);
+        res.statusCode = 200;
+        res.end();
     })
 }
 

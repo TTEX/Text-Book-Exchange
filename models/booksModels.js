@@ -3,7 +3,7 @@
 var mongoose = require('mongoose')
 
 var bookModels = mongoose.Schema({
-    departmentNo: String,
+    department: String,
     courseNumber: String, 
     bookTitle: String,
     email: String, 

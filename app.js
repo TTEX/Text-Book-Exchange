@@ -32,6 +32,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 //TODO: Might not need this at all. To be removed
 //app.use('/', router);
 //app.use('/users', users);
