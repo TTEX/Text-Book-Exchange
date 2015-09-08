@@ -33,7 +33,7 @@ exports.postBooks = function(req, res) {
 exports.getAllBooks = function(req, res) {
     res.header("Access-Control-Allow-Origin", "*")
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
-    
+
     books.find(function(err, book) {
         if(err) {
             res.send(err); 
@@ -58,5 +58,17 @@ exports.putBooks = function(req, res) {
 }
 
 exports.deleteBooks = function(req, res) {
+
+}
+
+exports.findBook = function(req, res) {
+    res.header("Access-Control-Allow-Origin", "*")
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
+
+   //Get the query string and parse it
+   var queryString = 
+
+   book.textSearch(queryString, )
+
 
 }
