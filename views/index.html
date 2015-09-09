@@ -1,0 +1,203 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Tufts Textbook Exchange</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+        <!-- DataTables CSS -->
+        <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.9/css/jquery.dataTables.css">
+
+        <!-- jQuery -->
+        <script type="text/javascript" charset="utf8" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+
+        <!-- DataTables -->
+        <script type="text/javascript" charset="utf8" src="http://cdn.datatables.net/1.10.9/js/jquery.dataTables.js"></script>
+
+
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <style>
+            body {
+                padding-top: 50px;
+                padding-bottom: 20px;
+            }
+        </style>
+        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="css/main.css">
+
+        <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+    <div class="container">
+        <header><h1>Tufts TextBook Exchange</h1></header>
+    </div>
+
+    <div class="container">
+      <!-- Example row of columns -->
+        <div class="container ">
+         <button type="button" onclick="sellBook()" class="btn btn-info large homepageButton">Sell a book</button>
+        </div>
+        <div class="container ">
+         <button type="button" onclick="buyBook()" class="btn btn-info large  homepageButton">Buy a book</button>
+      </div>
+
+        <!-- Sell Book Modal -->
+        <div class="modal fade" id="sellBookModal" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Sell a book</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form role="form">
+                            <div class="form-group">
+                                <label class="control-label">Department:</label>
+                                <div class="selectContainer">
+                                    <select class="form-control" id="sellDepartment">
+                                        <option value="">Choose a dept</option>
+                                        <option value="ANTH">ANTH (Anthropology)</option>
+                                        <option value="COMP">COMP (Computer Science)</option>
+                                        <option value="MATH">MATH (Mathematics)</option>
+                                        <option value="EC">EC (Economics)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Course Number:</label>
+                                <div class="selectContainer">
+                                    <select class="form-control" id="sellCourseNumber">
+                                        <option value="">Choose a course number</option>
+                                        <option value="1">001</option>
+                                        <option value="2">002</option>
+                                        <option value="3">003</option>
+                                        <option value="4">004</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Textbook Title:</label>
+                                <input type="email" name="sellBookTitle" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Email:</label>
+                                <input type="text" class="form-control" name="sellEmail">
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Condition:</label>
+                                <div class="selectContainer">
+                                    <select class="form-control" id="sellCondition">
+                                        <option value="">Choose a condition</option>
+                                        <option value="new">New</option>
+                                        <option value="barelyUsed">Barely Used</option>
+                                        <option value="used">Used</option>
+                                        <option value="tattered">Tattered</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <label>Price($):</label>
+                                <input type="text" class="form-control" name="sellPrice">
+                            </div>
+                            <a href="#" class="btn btn-info btn-small" onclick="sell()">
+                                <span class="glyphicon glyphicon-search">Sell</span>
+                            </a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Buy Book Modal -->
+        <div class="modal fade" id="buyBookModal" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Buy a book</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form role="form">
+                            <div class="form-group">
+                                <label class="control-label">Department:</label>
+                                <div class="selectContainer">
+                                    <select class="form-control" id="buyDepartment">
+                                        <option value="">Choose a dept</option>
+                                        <option value="ANTH">ANTH (Anthropology)</option>
+                                        <option value="COMP">COMP (Computer Science)</option>
+                                        <option value="MATH">MATH (Mathematics)</option>
+                                        <option value="EC">EC (Economics)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Course Number:</label>
+                                <div class="selectContainer">
+                                    <select class="form-control" id="buyCourseNumber">
+                                        <option value="">Choose a course number</option>
+                                        <option value="1">001</option>
+                                        <option value="2">002</option>
+                                        <option value="3">003</option>
+                                        <option value="4">004</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <a href="#" class="btn btn-info btn-small" onclick="searchBook()">
+                                <span class="glyphicon glyphicon-search">Search</span>
+                            </a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <table id="books" class="display hidden" cellspacing="0" width="100%">
+            <thead>
+            <tr>
+                <th>Class</th>
+                <th>Textbook Title Edition</th>
+                <th>Seller's Email</th>
+                <th>Condition.</th>
+                <th>Price</th>
+                <th>Date Posted</th>
+                <th>Email Seller</th>
+            </tr>
+            </thead>
+        </table>
+
+      <hr>
+
+      <footer>
+        <p class="center">&copy; Tufts Textbook Exchange 2015</p>
+      </footer>
+    </div> <!-- /container -->        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+
+        <script src="js/vendor/bootstrap.min.js"></script>
+
+        <script src="js/main.js"></script>
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X','auto');ga('send','pageview');
+        </script>
+    </body>
+</html>

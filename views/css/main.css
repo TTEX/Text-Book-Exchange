@@ -1,0 +1,37 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+.btn.sharp{
+   border-radius: 0;
+}
+
+p.center{
+   text-align: center;
+}
+
+button.homepageButton{
+   height: 50px;
+   width: 180px;
+   margin-bottom: 20px;
+   font-family: 'Open Sans', sans-serif;
+   margin-left: 40%;
+}
+
+h1{
+   text-align: center;
+   font-family: 'Open Sans', sans-serif;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
