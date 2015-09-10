@@ -1,6 +1,7 @@
 var books = require('../models/booksModels')
 
 
+
 exports.postBooks = function(req, res) {
 
     res.header("Access-Control-Allow-Origin", "*")
@@ -35,6 +36,7 @@ exports.getAllBooks = function(req, res) {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
 
     books.find(function(err, book) {
+        //TODO: Get to send the right error messages.
         if(err) {
             res.send(err); 
             res.statusCode = 404;
@@ -66,9 +68,21 @@ exports.findBook = function(req, res) {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
 
    //Get the query string and parse it
-   var queryString = 
+   var queryString = req.param('search')
 
-   book.textSearch(queryString, )
+   book.textSearch(queryString, function(err, output) {
+       if(err) {
+           res.send(err); 
+           res.statusCode = 404;
+           res.end():
+       }
+
+      //TODO: Get to send the right error messages
+      res.send(output);
+      res.statusCode = 200;
+      res.end();
+   })
 
 
 }
+
