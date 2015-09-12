@@ -20,12 +20,12 @@ exports.postBooks = function(req, res) {
              if(err) {
                  res.send(err);
                  res.statusCode = 404;
-                 res.end();
+                 //res.end();
              }
 
             res.send("Book added successfully");
             res.statusCode = 200;
-            res.end();
+           // res.end();
              
          })
 }
@@ -40,12 +40,13 @@ exports.getAllBooks = function(req, res) {
         if(err) {
             res.send(err); 
             res.statusCode = 404;
-            res.end():
+            //res.end():
         }
-
-        res.send(book);
-        res.statusCode = 200;
-        res.end();
+        else {
+          res.send(book);
+          res.statusCode = 200;
+          //res.end();
+        }
     })
 }
 
@@ -74,13 +75,13 @@ exports.findBook = function(req, res) {
        if(err) {
            res.send(err); 
            res.statusCode = 404;
-           res.end():
+           //res.end():
        }
 
       //TODO: Get to send the right error messages
       res.send(output);
       res.statusCode = 200;
-      res.end();
+      //res.end();
    })
 
 

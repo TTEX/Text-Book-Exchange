@@ -16,7 +16,7 @@ var bookModels = mongoose.Schema({
 bookModels.plugin(textSearch);
 
 //text index
-gameSchema.index({ tags: 'text' });
+bookModels.index({ tags: 'text' });
 
 
 module.exports = mongoose.model('book', bookModels)
