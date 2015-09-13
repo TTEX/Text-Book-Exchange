@@ -1,5 +1,6 @@
 var books = require('../models/booksModels')
 
+//TODO: Send the right error messages
 
 
 exports.postBooks = function(req, res) {
@@ -18,14 +19,13 @@ exports.postBooks = function(req, res) {
 
          newBook.save(function(err) {
              if(err) {
-                 res.send(err);
                  res.statusCode = 404;
-                 //res.end();
+                 res.send(err);
              }
 
-            res.send("Book added successfully");
             res.statusCode = 200;
-           // res.end();
+            res.send("Book added successfully");
+            
              
          })
 }
@@ -38,14 +38,13 @@ exports.getAllBooks = function(req, res) {
     books.find(function(err, book) {
         //TODO: Get to send the right error messages.
         if(err) {
-            res.send(err); 
             res.statusCode = 404;
-            //res.end():
+            res.send(err); 
         }
         else {
-          res.send(book);
           res.statusCode = 200;
-          //res.end();
+          res.send(book);
+          
         }
     })
 }
@@ -73,15 +72,15 @@ exports.findBook = function(req, res) {
 
    book.textSearch(queryString, function(err, output) {
        if(err) {
-           res.send(err); 
            res.statusCode = 404;
-           //res.end():
+           res.send(err); 
+           
        }
 
       //TODO: Get to send the right error messages
+       res.statusCode = 200;
       res.send(output);
-      res.statusCode = 200;
-      //res.end();
+    
    })
 
 
