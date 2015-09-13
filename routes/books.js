@@ -69,6 +69,7 @@ exports.findBook = function(req, res) {
 
    //Get the query string and parse it
    var queryString = req.param('search')
+   console.log(queryString);
 
    book.textSearch(queryString, function(err, output) {
        if(err) {

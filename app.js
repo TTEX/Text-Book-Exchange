@@ -42,6 +42,9 @@ router.route('/books')
 
 router.route('/books/:id')
   .post(bookController.findBook)
+
+router.route('/books/search')
+  .get(bookController.findBook)
   
 app.get('/', function(req, res){
   res.send("The server is up and running")
