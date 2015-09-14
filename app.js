@@ -40,14 +40,16 @@ router.route('/books')
   .delete(bookController.deleteBooks)
   .put(bookController.putBooks)
 
-router.route('/books/:id')
-  .post(bookController.findBook)
+//TODO: To remove this
+/*router.route('/books/:id')
+  .post(bookController.findBook) */
 
 router.route('/books/search')
   .get(bookController.findBook)
-  
+
+ //var __dirname = './views/'
 app.get('/', function(req, res){
-  res.send("The server is up and running")
+  res.sendFile(__dirname + '/views/index.html')
   console.log("This is working")
 })
 app.use('/', router)
