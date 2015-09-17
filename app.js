@@ -6,17 +6,12 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose')
 
-//TODO: To be deleted
-//var routes = require('./routes/index');
-//var users = require('./routes/users');
-
 var bookController = require('./routes/books')
 
 var app = express();
 var router = express.Router();
 
-//TODO: Connection to a mongodb database
-
+//TODO: Change to a connection on mongolabs
 mongoose.connect('mongodb://localhost/test')
 mongoose.connection.on('error', console.error.bind(console, 'connection error:'));
 
@@ -39,10 +34,6 @@ router.route('/books')
   .post(bookController.postBooks)
   .delete(bookController.deleteBooks)
   .put(bookController.putBooks)
-
-//TODO: To remove this
-/*router.route('/books/:id')
-  .post(bookController.findBook) */
 
 router.route('/books/search')
   .get(bookController.findBook)
